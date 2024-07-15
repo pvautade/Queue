@@ -1,0 +1,33 @@
+package queue;
+
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+
+public class TaskScheduler {
+    private Queue<Task> pendingTasks = new PriorityQueue<>();
+    private Queue<Task> completedTasks = new LinkedList<>();
+
+    public void addTask(Task task) {
+        pendingTasks.add(task);
+    }
+
+    public void completeTask() {
+        Task task = pendingTasks.poll();
+        if (task != null) {
+            completedTasks.add(task);
+        }
+    }
+
+    public void viewPendingTasks() {
+        System.out.println("Pending tasks (ordered by priority): " + pendingTasks);
+    }
+
+    public void findTasksInRange(int minPriority, int maxPriority) {
+        for (Task task : pendingTasks) {
+            if (task.getPriority() >= minPriority && task.getPriority() <= maxPriority) {
+                System.out.println(task);
+            }
+        }
+    }
+}

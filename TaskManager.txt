@@ -1,0 +1,58 @@
+package queue;
+
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.ArrayDeque;
+import java.util.Queue;
+
+public class TaskManager {
+
+    public static void main(String[] args) {
+        Queue<Task> linkedListQueue = new LinkedList<>();
+        Queue<Task> priorityQueue = new PriorityQueue<>();
+        Queue<Task> arrayDequeQueue = new ArrayDeque<>();
+
+        Task task1 = new Task(1, "Task 1", 2);
+        Task task2 = new Task(2, "Task 2", 1);
+        Task task3 = new Task(3, "Task 3", 3);
+        Task task4 = new Task(4, "Task 4", 1);
+        Task task5 = new Task(5, "Task 5", 2);
+
+        
+        linkedListQueue.add(task1);
+        linkedListQueue.add(task2);
+        linkedListQueue.add(task3);
+        linkedListQueue.add(task4);
+        linkedListQueue.add(task5);
+
+        priorityQueue.add(task1);
+        priorityQueue.add(task2);
+        priorityQueue.add(task3);
+        priorityQueue.add(task4);
+        priorityQueue.add(task5);
+
+        arrayDequeQueue.add(task1);
+        arrayDequeQueue.add(task2);
+        arrayDequeQueue.add(task3);
+        arrayDequeQueue.add(task4);
+        arrayDequeQueue.add(task5);
+
+       
+        System.out.println("LinkedList Queue: " + linkedListQueue);
+        System.out.println("PriorityQueue: " + priorityQueue);
+        System.out.println("ArrayDeque Queue: " + arrayDequeQueue);
+
+       
+        System.out.println("Dequeued from LinkedList: " + ((LinkedList<Task>) linkedListQueue).poll());
+        System.out.println("Dequeued from PriorityQueue: " + ((PriorityQueue<Task>) priorityQueue).poll());
+        System.out.println("Dequeued from ArrayDeque: " + ((ArrayDeque<Task>) arrayDequeQueue).poll());
+
+        
+        System.out.println("Peek LinkedList Queue: " + ((LinkedList<Task>) linkedListQueue).peek());
+        System.out.println("Peek PriorityQueue: " + ((PriorityQueue<Task>) priorityQueue).peek());
+        System.out.println("Peek ArrayDeque Queue: " + ((ArrayDeque<Task>) arrayDequeQueue).peek());
+
+      
+        System.out.println("Task 3 in LinkedList Queue? " + ((LinkedList<Task>) linkedListQueue).contains(task3));
+    }
+}

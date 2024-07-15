@@ -1,0 +1,31 @@
+package queue;
+
+import java.util.ArrayDeque;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+
+public class ComplexOperations {
+
+  
+    public static void sortTasksByPriority(LinkedList<Task> tasks) {
+        tasks.sort(Comparator.comparingInt(Task::getPriority));
+        System.out.println("Sorted LinkedList by priority: " + tasks);
+    }
+
+  
+    public static void moveTasks(ArrayDeque<Task> source, PriorityQueue<Task> destination, int threshold) {
+        for (Task task : source) {
+            if (task.getPriority() < threshold) {
+                destination.add(task);
+            }
+        }
+        source.removeIf(task -> task.getPriority() < threshold);
+    }
+
+   
+    public static void mergePriorityQueues(PriorityQueue<Task> queue1, PriorityQueue<Task> queue2) {
+        queue1.addAll(queue2);
+        System.out.println("Merged PriorityQueue: " + queue1);
+    }
+}
